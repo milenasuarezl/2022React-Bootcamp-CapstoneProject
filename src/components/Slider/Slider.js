@@ -9,7 +9,7 @@ const Slider = (props) => {
     const { slides, source} = props;
     return (
       <Swiper
-        spaceBetween={50}
+        spaceBetween={0}
         slidesPerView={slides}
       >
           {

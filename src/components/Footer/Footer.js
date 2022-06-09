@@ -1,8 +1,10 @@
+import { Wrapper, Article } from "./Footer.styled";
+
 const Footer = () => {
     return(<>
-        <footer>
-            <article>Ecommerce created during Wizeline's Academy React Bootcamp</article>
-        </footer>
+        <Wrapper>
+            <Article>Ecommerce created during Wizeline's Academy React Bootcamp</Article>
+        </Wrapper>
     </>)
 }
 

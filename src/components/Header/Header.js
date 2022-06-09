@@ -1,16 +1,17 @@
 import Logo from "../Logo/Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { Wrapper, SearchInput } from './Header.styled';
 
 const Header = () => {
     return(<>
-        <header>
+        <Wrapper>
             <Logo />
             <div>
-                <input type="text" placeholder="Search"/>
-                <FontAwesomeIcon disabled icon={faCartShopping} size='2xl'/>
+                <SearchInput type="text" placeholder="Search" disabled/>
+                <FontAwesomeIcon disabled icon={faCartShopping} size='xl'/>
             </div>
-        </header>
+        </Wrapper>
     </>)
 }
 
