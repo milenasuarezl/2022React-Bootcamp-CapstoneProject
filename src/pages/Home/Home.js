@@ -1,25 +1,10 @@
-import Slider from "../../components/Slider/Slider"; 
+import Slider from "../../components/Slider/Slider";
 import Banners from "../../assets/mocks/en-us/featured-banners.json";
 import Categories from "../../assets/mocks/en-us/product-categories.json";
 import Products from "../../assets/mocks/en-us/featured-products.json";
 import ProductGrid from "../../components/ProductGrid.js/ProductGrid";
 import { SIMPLE_SLIDER, MULTIPLE_SLIDER } from '../../utils/constants'; 
-
-const mapBannerCategoryData = (source) => { 
-    return source?.results?.map((resource) => {
-        const { id, href, data } = resource;
-        const { main_image } = data;
-        const { alt, url, dimensions } = main_image;
-        return {
-            id,
-            link: href,
-            name: data?.title || data?.name,
-            imageUrl: url,
-            dimensions,
-            alt,
-        }
-    })
-};
+import { mapBannerCategoryData } from "../../utils/utils";
 
 const mapProducts = (products, categories) => {
     return products?.results?.map((resource) => {
@@ -41,15 +26,18 @@ const mapProducts = (products, categories) => {
     })
 };
 
-const Home = () => {
+const Home = (props) => {
     const banners = mapBannerCategoryData(Banners);
     const categories = mapBannerCategoryData(Categories);
     const products = mapProducts(Products, categories);
 
     return(<>
         <Slider slides={SIMPLE_SLIDER} source={banners}/>
+        <h1>Categories</h1>
         <Slider slides={MULTIPLE_SLIDER} source={categories}/>
+        <h1>Products</h1>
         <ProductGrid products={products}/>
+        <button  onClick={props.onClick}>View All products</button>
     </>)
 }
 
