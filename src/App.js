@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import GlobalContent from './GlobalContent.js';
-import ProductList from './pages/Home/ProductList';
+import ProductList from './pages/ProductList/ProductList';
 import { useState } from 'react';
 
 function App() {
