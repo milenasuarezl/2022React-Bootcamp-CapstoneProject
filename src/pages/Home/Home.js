@@ -1,15 +1,14 @@
 import Slider from "../../components/Slider/Slider";
-import Banners from "../../assets/mocks/en-us/featured-banners.json";
-import Categories from "../../assets/mocks/en-us/product-categories.json";
-import Products from "../../assets/mocks/en-us/featured-products.json";
 import ProductGrid from "../../components/ProductGrid.js/ProductGrid";
 import { SIMPLE_SLIDER, MULTIPLE_SLIDER } from '../../utils/constants'; 
-import { mapBannerCategoryData, mapProducts } from "../../utils/utils";
+import { useFeaturedBanner } from "../../utils/hooks/useFeaturedBanner";
+import { useProductCategories } from "../../utils/hooks/useProductCategories";
+import { useFeaturedProducts } from "../../utils/hooks/useFeaturedProducts";
 
 const Home = (props) => {
-    const banners = mapBannerCategoryData(Banners);
-    const categories = mapBannerCategoryData(Categories);
-    const products = mapProducts(Products, categories).slice(0, 4);
+    const banners = useFeaturedBanner();
+    const categories = useProductCategories();
+    const products = useFeaturedProducts(categories).slice(0, 4);
 
     return(<>
         <Slider slides={SIMPLE_SLIDER} source={banners}/>
