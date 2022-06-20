@@ -1,14 +1,20 @@
 import { Wrapper, Div, CheckBox } from "./Slidebar.styled";
 
 const Sidebar = (props) => {
-    const { data, onClick } = props;
+    const { data, onChange } = props;
     return<Wrapper>
             {
-                data.map(({id, name}) => {
+                data.map(({id, data, checked}) => {
                     return (
                         <Div key={id}>
-                            <CheckBox type="checkbox" onClick={onClick}/>
-                            <label>{name}</label>
+                            <CheckBox 
+                                type="checkbox"
+                                id={id}
+                                defaultChecked={checked}
+                                name={data.name}
+                                onChange={onChange} 
+                            />
+                            <label>{data.name}</label>
                         </Div>
                     )
                 })

@@ -8,3 +8,9 @@ export const Wrapper = styled.section`
 export const Div = styled.div`
     width: 30%;
 `
+
+export const ProductContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+`

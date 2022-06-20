@@ -9,6 +9,7 @@ export const mapBannerCategoryData = (source) => {
             name: data?.title || data?.name,
             imageUrl: url,
             dimensions,
+            checked: false,
             alt,
         }
     })

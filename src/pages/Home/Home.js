@@ -3,12 +3,14 @@ import ProductGrid from "../../components/ProductGrid.js/ProductGrid";
 import { SIMPLE_SLIDER, MULTIPLE_SLIDER } from '../../utils/constants'; 
 import { useFeaturedBanner } from "../../utils/hooks/useFeaturedBanner";
 import { useProductCategories } from "../../utils/hooks/useProductCategories";
-import { useFeaturedProducts } from "../../utils/hooks/useFeaturedProducts";
+//import { useFeaturedProducts } from "../../utils/hooks/useFeaturedProducts";
+import products from "../../assets/mocks/en-us/featured-products.json";
+import { Button, Div } from "./Home.styled";
 
 const Home = (props) => {
     const banners = useFeaturedBanner();
     const categories = useProductCategories();
-    const products = useFeaturedProducts(categories).slice(0, 4);
+    // const products = useFeaturedProducts(categories);
 
     return(<>
         <Slider slides={SIMPLE_SLIDER} source={banners}/>
@@ -16,7 +18,9 @@ const Home = (props) => {
         <Slider slides={MULTIPLE_SLIDER} source={categories}/>
         <h1>Products</h1>
         <ProductGrid products={products}/>
-        <button onClick={props.onClick}>View All products</button>
+        <Div>
+            <Button onClick={props.onClick}>View All products</Button>
+        </Div>
     </>)
 }
 
