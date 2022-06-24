@@ -10,7 +10,8 @@ const Tags = (props) => {
                         <button 
                             key={id} 
                             onClick={onClick}
-                            id={id}>
+                            id={id}
+                        >
                             {name} X
                         </button>
                     )
