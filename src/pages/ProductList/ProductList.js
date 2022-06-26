@@ -1,36 +1,26 @@
 import ProductGrid from "../../components/ProductGrid.js/ProductGrid";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Tags from "../../components/Tags/Tags";
-import { Wrapper, Div, ProductContainer } from "./ProductList.styled";
-import { useEffect, useState } from "react";
-//import { useProductCategories } from "../../utils/hooks/useProductCategories";
-// import { useFeaturedProducts } from "../../utils/hooks/useFeaturedProducts";
-
 import categories from "../../assets/mocks/en-us/product-categories.json";
 import products from "../../assets/mocks/en-us/featured-products.json";
 import Loading from "../../components/Loading/Loading";
+import Modal from "../../components/Modal/Modal";
 
-const ProductList = (props) => {
-    //const categories = useProductCategories();
-    //const products = useFeaturedProducts(categories.results);
+import { Wrapper, FiltersDesktop, FiltersMobile, ProductContainer, ShowFilters } 
+from "./ProductList.styled";
+import { useEffect, useState } from "react";
+import useModal from "../../utils/hooks/useModal";
 
+const ProductList = () => {
     const [ categoryList, setCategoryList ] = useState(() => {
         return categories.results.map((category) => ({...category, checked: false}));
     });
-
-    //const [ categoryList, setCategoryList ] = useState([]);
 
     const [ productsFiltered, setProductsFiltered ] = useState(products);
     const [ filters, setFilters ] = useState([]);
     const [ isLoading, setLoading] = useState(true);
 
-    /*useEffect(() => {
-        setCategoryList((prev) => {
-            console.log('otrrrr', categories)
-            return categories;
-        })
-    }, [categories])*/
-  
+    const { isShowing: isLoginFormShowed, toggle: toggleLoginForm } = useModal();
 
     const filterProducts = () => {
         const newProducts = [];
@@ -87,10 +77,26 @@ const ProductList = (props) => {
     }
 
     return(<Wrapper>
-                <Div>
+                <ShowFilters onClick={toggleLoginForm}>
+                    Show Filters
+                </ShowFilters>
+
+                <FiltersMobile>
+                    <Modal 
+                        isShowing={isLoginFormShowed}
+                        hide={toggleLoginForm}
+                        title="Filters"
+                    >
+                        <Tags filters={filters} onClick={deleteFilter}/>
+                        <Sidebar data={categoryList} onChange={handleFilter}/>
+                    </Modal>
+                </FiltersMobile>
+                
+                <FiltersDesktop>
                     <Tags filters={filters} onClick={deleteFilter}/>
                     <Sidebar data={categoryList} onChange={handleFilter}/>
-                </Div>
+                </FiltersDesktop>
+
                 <ProductContainer>
                     {
                         isLoading ? <Loading/> : <ProductGrid products={productsFiltered}/>

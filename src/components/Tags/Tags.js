@@ -15,7 +15,7 @@ const Tags = (props) => {
                                 onClick={onClick}
                                 id={id}
                             >  
-                                <Span>{name}</Span> X
+                                <Span>{name}</Span>X
                             </Button>
                         )
                     })

@@ -21,7 +21,7 @@ function App() {
   return (
     <GlobalContent>
       <Header onClick={() => setVisiblePage('Home')} />
-      <ProductList />
+      {visiblePage}
       <Footer />
     </GlobalContent>
   );
