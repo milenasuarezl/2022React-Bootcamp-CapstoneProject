@@ -1,23 +1,27 @@
+import { Button, Span, Wrapper, WrapperButtons} from './Tags.styled';
+
 const Tags = (props) => {
     const { filters, onClick} = props;
 
     if (filters.length > 0) {
-        return<>
+        return<Wrapper>
             <label>Filtros aplicados</label>
-            {
-                filters.map(({id, name}) => {
-                    return(
-                        <button 
-                            key={id} 
-                            onClick={onClick}
-                            id={id}
-                        >
-                            {name} X
-                        </button>
-                    )
-                })
-            }
-        </>
+            <WrapperButtons>
+                {
+                    filters.map(({id, name}) => {
+                        return(        
+                            <Button 
+                                key={id} 
+                                onClick={onClick}
+                                id={id}
+                            >  
+                                <Span>{name}</Span> X
+                            </Button>
+                        )
+                    })
+                }
+             </WrapperButtons>
+        </Wrapper>
     }
 
     return <></>

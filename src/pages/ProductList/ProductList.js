@@ -30,7 +30,25 @@ const ProductList = (props) => {
             return categories;
         })
     }, [categories])*/
+  
 
+    const filterProducts = () => {
+        const newProducts = [];
+        if (filters.length > 0) {
+            products.results.forEach(product => {
+                if (filters.some(filter => product.data.category.id === filter.id)) {
+                    newProducts.push(product);
+                }
+            })
+            setProductsFiltered({ ...productsFiltered, results: newProducts});
+        } else {
+            setProductsFiltered({ ...productsFiltered, results: products.results});
+        }
+    }
+
+    useEffect(() => {
+        filterProducts();
+    }, [filters]);
 
     useEffect(()=> {
         setTimeout(() => {
@@ -57,21 +75,15 @@ const ProductList = (props) => {
 
     const addFilter = (id, name, checked) => {
         setFilters(filters.concat({ id, name, checked}));
-        setFilters((previousFilters) => {
-            setProductsFiltered(filterProducts(id));
-            return previousFilters;
-        })
-    }
-
-    const filterProducts = (categoryId) => {
-        let newProducts = products.results.filter(({data}) => (data.category.id === categoryId));
-        return {...productsFiltered, results: newProducts};
     }
 
     const deleteFilter = (event) => {
         const { id } = event.target;
-        setFilters(filters.filter(filter => filter.id !== id));
-        setProductsFiltered(filterProducts(id));
+        setFilters((filters) => {
+            const newFilters = filters.filter(filter => filter.id !== id);
+            updateCategoryList(id, false);
+            return newFilters;
+        });                                                              
     }
 
     return(<Wrapper>

@@ -10,7 +10,7 @@ const Sidebar = (props) => {
                             <CheckBox 
                                 type="checkbox"
                                 id={id}
-                                defaultChecked={checked}
+                                checked={checked}
                                 name={data.name}
                                 onChange={onChange} 
                             />

@@ -8,6 +8,7 @@ export const Wrapper = styled.section`
 
 export const Div = styled.div`
     padding: 1rem 0;
+    word-break: break-word;
 `
 
 export const CheckBox = styled.input`
