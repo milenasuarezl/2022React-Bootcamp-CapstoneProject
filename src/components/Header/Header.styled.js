@@ -20,3 +20,13 @@ export const SearchInput = styled.input`
     margin-right: 1em;
     width: 60%;
 `
+
+export const Img = styled.img`
+    width: 24px;
+    height: 27px;
+`
+
+export const WrapperActions = styled.div`
+    display: flex;
+    align-items: center;
+`
