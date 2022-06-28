@@ -1,21 +1,18 @@
-import { Figure, FigureCaption, Image, Div, Wrapper  } from "./Product.styled"; 
+import { Image, Div, Wrapper  } from "./Product.styled"; 
 
-const Product = (props) => {
-    const {imageUrl, name, alt, link, categoryName, price, dimensions} = props.data;
+const Product = ({data}) => {
+    const {name, mainimage, price} = data;
+    const { alt,  url, dimensions } = mainimage;
     const { width, height } = dimensions;
 
     return (<Wrapper>
-                <Figure>
-                    <Image 
-                        width={width}
-                        height={height}
-                        src={imageUrl} 
-                        alt={alt} 
-                        href={link} 
-                        target="_blank" 
-                    />
-                    <FigureCaption>{categoryName}</FigureCaption>
-                </Figure>
+                <Image 
+                    width={width}
+                    height={height}
+                    src={url} 
+                    alt={alt} 
+                    target="_blank" 
+                />
                 <Div>
                     <p>{name}</p>
                     <p>${price}</p>

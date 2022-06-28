@@ -1,16 +1,15 @@
 import Logo from "../Logo/Logo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper, SearchInput } from './Header.styled';
+import shoppingCart from '../../assets/icons/shopping-cart.png';
+import { Img, Wrapper, SearchInput, WrapperActions } from './Header.styled';
 
-const Header = () => {
+const Header = (props) => {
     return(<>
         <Wrapper>
-            <Logo />
-            <div>
+            <Logo onClick={props.onClick} />
+            <WrapperActions>
                 <SearchInput type="text" placeholder="Search" disabled/>
-                <FontAwesomeIcon disabled icon={faCartShopping} size='xl'/>
-            </div>
+                <Img src={ shoppingCart } alt="shopping cart"/>
+            </WrapperActions>
         </Wrapper>
     </>)
 }
