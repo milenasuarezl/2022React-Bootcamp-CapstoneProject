@@ -69,11 +69,9 @@ const ProductList = () => {
 
     const deleteFilter = (event) => {
         const { id } = event.target;
-        setFilters((filters) => {
-            const newFilters = filters.filter(filter => filter.id !== id);
-            updateCategoryList(id, false);
-            return newFilters;
-        });                                                              
+        setFilters((filters) => filters.filter(filter => filter.id !== id));
+        updateCategoryList(id, false);
+                                                              
     }
 
     return(<Wrapper>
